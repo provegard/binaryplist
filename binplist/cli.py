@@ -29,4 +29,4 @@ def run(filename, format):
         except PListFormatError as e:
             click.echo("Format error: %s" % (e.message, ), err=True)
         except PListUnhandledError as e:
-            click.echo("Unknown error: %s" % (e.message, ), err=True)
+            click.echo("Unhandled: %s" % (e.message, ), err=True)
