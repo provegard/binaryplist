@@ -31,7 +31,7 @@ Command-line interface
 The module installs a script that can be used from the command-line. The basic usage
 of the script is:
 
-    binplist-cli [--format=&lt;json|plist&gt;] <filename>
+    binplist-cli [--format=<json|plist>] <filename>
 
 Where:
 
