@@ -3,18 +3,18 @@ import os.path
 import datetime
 from binplist import *
 from binplist.plist import UTC
-from cStringIO import StringIO
+from io import BytesIO
 
 
 class TestReadBinary(unittest.TestCase):
 
     def test_invalid_signature(self):
-        fd = StringIO("hello, world")
+        fd = BytesIO(b"hello, world")
         self.assertRaises(PListFormatError, read_binary_plist, fd)
 
     def test_parsing_setProperty_plist(self):
-        data = 'bplist00\xd1\x01\x02Uvalue\xd4\x03\x04\x05\x06\x07\x07\x07\x07YtimescaleUvalueUepochUflags\x10\x00\x08\x0b\x11\x1a$*06\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x08\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x008'
-        fd = StringIO(data)
+        data = b'bplist00\xd1\x01\x02Uvalue\xd4\x03\x04\x05\x06\x07\x07\x07\x07YtimescaleUvalueUepochUflags\x10\x00\x08\x0b\x11\x1a$*06\x00\x00\x00\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x08\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x008'
+        fd = BytesIO(data)
         content = read_binary_plist(fd)
         self.assertTrue('value' in content)
 
@@ -33,7 +33,7 @@ def test_read_plist():  # generator function
     yield check_plist, 'plist/string.bin', "hello"
     yield check_plist, 'plist/longstring.bin', "hello there, world!"
     yield check_plist, 'plist/unicode.bin', u"non-ascii \u00e5\u00e4\u00f6"
-    yield check_plist, 'plist/data.bin', "pleasure."
+    yield check_plist, 'plist/data.bin', b"pleasure."
     yield check_plist, 'plist/array.bin', [1, 2, 3]
     yield check_plist, 'plist/set.bin', {1, 2, 3}
     yield check_plist, 'plist/airplay.bin', {"Content-Location":
@@ -51,4 +51,4 @@ def read_file(fname):
     with open(os.path.join(os.path.dirname(__file__),
                            fname), 'rb') as fd:
         s = fd.read()
-        return StringIO(s)
+        return BytesIO(s)

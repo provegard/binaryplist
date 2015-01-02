@@ -45,6 +45,12 @@ from datetime import datetime, tzinfo, timedelta
 #         element # in offset table which is top level object
 #         offset table offset
 
+try:
+    unichr(8364)
+except NameError:
+    # Python 3
+    def unichr(x):
+        return chr(x)
 
 # From CFDate Reference: "Absolute time is measured in seconds relative to the
 # absolute reference date of Jan 1 2001 00:00:00 GMT".
@@ -115,7 +121,7 @@ class BinaryPListReader(object):
         buf = fd.read(7)
 
         # verify the signature; the first version digit is always 0
-        if buf != "bplist0":
+        if buf != b"bplist0":
             raise PListFormatError("Invalid signature: %s" % (buf, ))
 
         # seek to and read the trailer (validation omitted for now)
@@ -149,7 +155,7 @@ class BinaryPListReader(object):
                 obj.clear()
                 obj.update(temp)
             if isinstance(obj, dict):
-                temp = {k.resolve(objects): v.resolve(objects) for k, v in obj.items()}
+                temp = {k.resolve(objects): v.resolve(objects) for k, v in list(obj.items())}
                 obj.clear()
                 obj.update(temp)
 
@@ -179,10 +185,16 @@ class BinaryPListReader(object):
             secs = self._read_sized_float(3)
             secs += SECS_EPOCH_TO_2001
             obj = datetime.fromtimestamp(secs, UTC())
-        elif nb1 == MARKER_DATA or nb1 == MARKER_ASCIISTRING:
+        elif nb1 == MARKER_DATA:
+            # Binary data
             count = self._read_count(nb2)
             obj = self._fd.read(count)
+        elif nb1 == MARKER_ASCIISTRING:
+            # ASCII string
+            count = self._read_count(nb2)
+            obj = self._fd.read(count).decode("ascii")
         elif nb1 == MARKER_UNICODE16STRING:
+            # UTF-16 string
             count = self._read_count(nb2)
             data = self._fd.read(count * 2)
             chars = unpack(">%dH" % (count, ), data)
@@ -207,7 +219,7 @@ class BinaryPListReader(object):
             # we store lazy references to the object list
             keys = [ObjectRef(self._read_sized_int(self.objectRefSize)) for _ in range(0, count)]
             values = [ObjectRef(self._read_sized_int(self.objectRefSize)) for _ in range(0, count)]
-            obj = dict(zip(keys, values))
+            obj = dict(list(zip(keys, values)))
 
         try:
             return obj

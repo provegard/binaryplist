@@ -1,4 +1,4 @@
-from plist import read_binary_plist, PListFormatError, PListUnhandledError
+from .plist import read_binary_plist, PListFormatError, PListUnhandledError
 
 __all__ = [
     'read_binary_plist',
