@@ -43,6 +43,7 @@ setup(
     author_email='per@rovegard.se',
     description='Reads Apple binary plist files',
     long_description='Provides an API and a CLI for reading Apply binary plist files, Python 2 & 3 compatibility.',
+    keywords='binary plist',
     entry_points={
         'console_scripts': [
             'binplist-cli = binplist.cli:run',
