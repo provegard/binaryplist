@@ -20,8 +20,6 @@ def find_version(*file_paths):
         return version_match.group(1)
     raise RuntimeError("Unable to find version string.")
 
-long_description = read('README.md')
-
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
@@ -44,7 +42,7 @@ setup(
     cmdclass={'test': PyTest},
     author_email='per@rovegard.se',
     description='Reads Apple binary plist files',
-    long_description=long_description,
+    long_description='Provides an API and a CLI for reading Apply binary plist files, Python 2 & 3 compatibility.',
     entry_points={
         'console_scripts': [
             'binplist-cli = binplist.cli:run',
