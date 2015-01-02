@@ -48,7 +48,13 @@ Installing
 
     pip install git+git://github.com/provegard/binplist.git
 
-The `https` scheme can also be used.
+Use `pip3` for a Python 3 installation. The `https` scheme can also be used.
+
+Compatibility
+-------------
+
+Tested with Python 2.7 and 3.4 using `tox`. Python 2.6 not tested due to this issue:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=754248
 
 Author & contact
 ----------------
