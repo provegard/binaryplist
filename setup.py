@@ -23,7 +23,7 @@ def find_version(*file_paths):
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = ['--strict', '--verbose', '--tb=long', 'tests']
+        self.test_args = ['--strict', '--verbose', '--tb=long', 'test']
         self.test_suite = True
 
     def run_tests(self):
