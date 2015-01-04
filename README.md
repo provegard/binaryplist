@@ -1,7 +1,7 @@
-binplist
-========
+binaryplist
+===========
 
-![Build status](https://travis-ci.org/provegard/binplist.svg)
+![Build status](https://travis-ci.org/provegard/binaryplist.svg)
 
 Python module for reading an Apple binary plist. When I wrote this code, the Python standard
 library didn't have support for reading binary plists.
@@ -33,7 +33,7 @@ Command-line interface
 The module installs a script that can be used from the command-line. The basic usage
 of the script is:
 
-    binplist-cli [--format=<json|plist>] <filename>
+    binaryplist-cli [--format=<json|plist>] <filename>
 
 Where:
 
@@ -44,9 +44,13 @@ Where:
 Installing
 ----------
 
-*binplist* can be installed directly from GitHub using pip:
+*binaryplist* can be installed directly from GitHub using pip:
 
-    pip install git+git://github.com/provegard/binplist.git
+    pip install git+git://github.com/provegard/binaryplist.git
+
+Or from PyPi:
+
+    pip install binaryplist
 
 Use `pip3` for a Python 3 installation. The `https` scheme can also be used.
 
@@ -58,7 +62,7 @@ https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=754248
 
 Author & contact
 ----------------
-Per Rovegård
+Per Roveg&aring;rd
 
 E-mail: per@rovegard.se
 
@@ -69,4 +73,4 @@ Blog: http://programmaticallyspeaking.com
 License
 -------
 
-*binplist* is licensed under the 3-clause BSD license. See the LICENSE file for the full license text.
+*binaryplist* is licensed under the 3-clause BSD license. See the LICENSE file for the full license text.

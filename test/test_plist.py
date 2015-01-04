@@ -1,8 +1,8 @@
 import unittest
 import os.path
 import datetime
-from binplist import *
-from binplist.plist import UTC
+from binaryplist import *
+from binaryplist.plist import UTC
 from io import BytesIO
 
 

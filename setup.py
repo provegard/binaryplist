@@ -32,9 +32,9 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 setup(
-    name='binplist',
-    version=find_version('binplist', '__init__.py'),
-    url='https://github.com/provegard/binplist',
+    name='binaryplist',
+    version=find_version('binaryplist', '__init__.py'),
+    url='https://github.com/provegard/binaryplist',
     license='BSD',
     author='Per Rovegard',
     tests_require=['pytest'],
@@ -46,13 +46,13 @@ setup(
     keywords='binary plist',
     entry_points={
         'console_scripts': [
-            'binplist-cli = binplist.cli:run',
+            'binarylist-cli = binaryplist.cli:run',
             ],
         },
-    packages=['binplist'],
+    packages=['binaryplist'],
     include_package_data=True,
     platforms='any',
-    test_suite='binplist.test.test_plist',
+    test_suite='binaryplist.test.test_plist',
     zip_safe=False,
     package_data={},
     classifiers = [
