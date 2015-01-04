@@ -3,12 +3,13 @@ binaryplist
 
 [![Build Status](https://travis-ci.org/provegard/binaryplist.svg?branch=master)](https://travis-ci.org/provegard/binaryplist)
 
-Python module for reading an Apple binary plist. When I wrote this code, the Python standard
-library didn't have support for reading binary plists.
+Python module for reading an Apple binary plist. When I wrote this code back in 2011 as part
+of another project, the Python standard library didn't have support for reading binary plists.
+Python 2 still hasn't, whereas support has been added in Python 3.
 
-What's the point of it now, given that Python 3 has binary plist support? Two reasons:
+What's the point of it now then, given that Python 3 has binary plist support? Two reasons:
 
-* Python 2 doesn't support it.
+* Python 2 compatibility.
 * In my testing, the plist implementation in Python 3.4.2 fails to read some binary plist
   files present in iPhone backups.
 
@@ -64,6 +65,9 @@ Related
 -------
 
 The Python 3 `plistlib` module: https://docs.python.org/3/library/plistlib.html
+
+Python 3.4.2 doesn't support set data and parses date into local `datetime` objects,
+whereas this module returns UTC `datetime` objects.
 
 `binplist`: https://code.google.com/p/binplist
 
