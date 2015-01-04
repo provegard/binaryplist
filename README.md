@@ -1,7 +1,7 @@
 binaryplist
 ===========
 
-![Build status](https://travis-ci.org/provegard/binaryplist.svg)
+[![Build Status](https://travis-ci.org/provegard/binaryplist.svg?branch=master)](https://travis-ci.org/provegard/binaryplist)
 
 Python module for reading an Apple binary plist. When I wrote this code, the Python standard
 library didn't have support for reading binary plists.
