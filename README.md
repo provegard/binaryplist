@@ -60,6 +60,17 @@ Compatibility
 Tested with Python 2.7 and 3.4 using `tox`. Python 2.6 not tested due to this issue:
 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=754248
 
+Related
+-------
+
+The Python 3 `plistlib` module: https://docs.python.org/3/library/plistlib.html
+
+`binplist`: https://code.google.com/p/binplist
+
+`binplist` parses set data into an array, whereas `binaryplist` (this module) parses
+it into a Python `set`.
+
+
 Author & contact
 ----------------
 Per Roveg&aring;rd
